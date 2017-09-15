@@ -1,7 +1,7 @@
 import React, {Component} from 'react'
 import {Link} from 'react-router-dom'
 import {Row, Col, Button, Card} from 'antd'
-import {Header} from '../common'
+import Header from '../common/Header'
 
 class HomeComponent extends Component {
     render() {

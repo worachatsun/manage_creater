@@ -1,7 +1,6 @@
 import React, {Component} from 'react'
-import {Link} from 'react-router-dom'
-import {Row, Col, Input, Card, Button, Icon} from 'antd'
-import {Header} from '../common'
+import {Row, Col, Card, Icon} from 'antd'
+import Header from '../common/Header'
 
 class ProfilePage extends Component {
     render() {
@@ -13,7 +12,7 @@ class ProfilePage extends Component {
                         <Card>
                             <Row gutter={16}>
                                 <Col span={24} style={{display: 'flex', justifyContent: 'center'}}>
-                                    <img style={{width: 210, height: 200, borderRadius: 5}} src={'http://www.clker.com/cliparts/7/4/c/4/1446118397610284725jobs.png'} alt={'Profile Image'}/>
+                                    <img style={{width: 210, height: 200, borderRadius: 5}} src={'http://www.clker.com/cliparts/7/4/c/4/1446118397610284725jobs.png'} alt={'Profile'}/>
                                 </Col>
                             </Row>
                             <Row gutter={16}>

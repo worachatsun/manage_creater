@@ -25,25 +25,25 @@ class ExportApp extends Component{
                         <div style={{width: '100%', maxHeight: 559, overflow: 'auto', paddingTop: 10}}>
                             <center>
                                 <div style={{width: 355, height: 300, border: '1px solid #ddd', marginBottom: 10}}>
-                                    <img src={require('../styles/images/livedemo.png')} style={{width: '100%', height: 230}}/>
+                                    <img alt={'demo'} src={require('../styles/images/livedemo.png')} style={{width: '100%', height: 230}}/>
                                     <div style={{width: '100%', height: 70, display: 'flex', alignItems: 'center', marginLeft: 20}}>
                                         <div style={{fontSize: 16}}>asdsa</div>
                                     </div>
                                 </div>
                                 <div style={{width: 355, height: 90, border: '1px solid #ddd', marginBottom: 10, display: 'flex', flexDirection: 'row'}}>
-                                    <img src={require('../styles/images/livedemo.png')} style={{width: 130, height: '100%'}}/>
+                                    <img alt={'demo'} src={require('../styles/images/livedemo.png')} style={{width: 130, height: '100%'}}/>
                                     <div style={{width: 130, height: '100%', flex: 1, display: 'flex', alignItems: 'center', marginLeft: 15}}>
                                         Justify
                                     </div>
                                 </div>
                                 <div style={{width: 355, height: 90, border: '1px solid #ddd', marginBottom: 10, display: 'flex', flexDirection: 'row'}}>
-                                <img src={require('../styles/images/livedemo.png')} style={{width: 130, height: '100%'}}/>
+                                <img alt={'demo'} src={require('../styles/images/livedemo.png')} style={{width: 130, height: '100%'}}/>
                                     <div style={{width: 130, height: '100%', flex: 1, display: 'flex', alignItems: 'center', marginLeft: 15}}>
                                         Justify
                                     </div>
                                 </div>
                                 <div style={{width: 355, height: 90, border: '1px solid #ddd', marginBottom: 10, display: 'flex', flexDirection: 'row'}}>
-                                <img src={require('../styles/images/livedemo.png')} style={{width: 130, height: '100%'}}/>
+                                <img alt={'demo'} src={require('../styles/images/livedemo.png')} style={{width: 130, height: '100%'}}/>
                                     <div style={{width: 130, height: '100%', flex: 1, display: 'flex', alignItems: 'center', marginLeft: 15}}>
                                         Justify
                                     </div>

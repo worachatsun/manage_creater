@@ -1,7 +1,7 @@
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
 import {Row, Col, Button, Steps, message, Icon} from 'antd'
-import {Header} from '../common'
+import Header from '../common/Header'
 import InsertInformation from './InsertInformation'
 import ChooseFeature from './ChooseFeature'
 import ExportApp from './ExportApp'

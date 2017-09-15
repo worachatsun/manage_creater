@@ -1,10 +1,9 @@
 import React, {Component} from 'react'
-import {Row, Col, Form, Icon, Input, Button, Card} from 'antd'
+import {Row, Col, Card} from 'antd'
 import NewspaperIcon from 'mdi-react/NewspaperIcon'
 import CalendarTextIcon from 'mdi-react/CalendarTextIcon'
 import CoinIcon from 'mdi-react/CoinIcon'
 import WorkerIcon from 'mdi-react/WorkerIcon'
-import UploadImage from './UploadImage'
 import '../styles/css/index.css'
 
 class ChooseFeature extends Component {

@@ -1,7 +1,7 @@
 import React, {Component} from 'react'
 import { connect } from 'react-redux'
 import {storeCreateData} from '../actions'
-import {Row, Col, Form, Icon, Input, Button, message} from 'antd'
+import {Row, Col, Form, Icon, Input, message} from 'antd'
 import { BlockPicker } from 'react-color'
 import UploadImage from './UploadImage'
 
@@ -21,7 +21,7 @@ class InsertInformation extends Component {
 
     componentWillUnmount() {
         const { uni_abb, uni_name, uni_th_abb, uni_th_name, color } = this.state
-        if(uni_abb == ''| uni_name == ''){
+        if(uni_abb === ''| uni_name === ''){
             this.props.firstPage()
             message.error('Please insert University name and abbreviation')
         }
@@ -38,8 +38,6 @@ class InsertInformation extends Component {
     }
 
     render() {
-        const { uni_abb, uni_name, uni_th_abb, uni_th_name, color } = this.props.create_data
-        
         return (
             <div>
                 <Row>
