@@ -1,6 +1,6 @@
 import React, {Component} from 'react'
 import { connect } from 'react-redux'
-import {storeCreateData} from '../actions'
+import {storeCreateData, storeLogo} from '../actions'
 import {Row, Col, Form, Icon, Input, message} from 'antd'
 import { BlockPicker } from 'react-color'
 import UploadImage from './UploadImage'
@@ -22,7 +22,7 @@ class InsertInformation extends Component {
     componentWillUnmount() {
         const { uni_abb, uni_name, uni_th_abb, uni_th_name, color } = this.state
         if(uni_abb === ''| uni_name === ''){
-            this.props.firstPage()
+            this.props.toPage(0)
             message.error('Please insert University name and abbreviation')
         }
         else
@@ -81,7 +81,7 @@ class InsertInformation extends Component {
                     </Col>
                     <Col style={styles.middleContent} span={8} pull={16}>
                         <Row><Col style={{fontSize: '2em', marginBottom: 10}}>University logo</Col></Row>
-                        <UploadImage />
+                        <UploadImage storeImage={this.props.storeLogo} />
                     </Col>
                 </Row>
             </div>
@@ -122,7 +122,7 @@ const styles = {
 }
 
 const mapStateToProps = state => {
-    return { create_data: state.create.get('create_data') }
+    return { create_data: state.create.get('create_data'), logo: state.create.get('logo') }
 }
 
-export default connect(mapStateToProps, { storeCreateData })(InsertInformation)
+export default connect(mapStateToProps, { storeCreateData, storeLogo })(InsertInformation)

@@ -13,11 +13,11 @@ class CreateAppComponent extends Component {
         super(props)
         this.steps = [{
             title: 'Insert information',
-            content: <InsertInformation firstPage={() => this.setState({current: 0})}/>,
+            content: <InsertInformation toPage={page => this.setState({current: page})}/>,
             logo: 'edit'
         }, {
             title: 'Choose feature',
-            content: <ChooseFeature />,
+            content: <ChooseFeature toPage={page => this.setState({current: page})}/>,
             logo: 'appstore'
         }, {
             title: 'Genarate App',

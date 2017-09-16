@@ -1,5 +1,7 @@
 import React, {Component} from 'react'
-import {Row, Col, Card} from 'antd'
+import {connect} from 'react-redux'
+import {Row, Col, Card, message} from 'antd'
+import {chooseFeature} from '../actions'
 import NewspaperIcon from 'mdi-react/NewspaperIcon'
 import CalendarTextIcon from 'mdi-react/CalendarTextIcon'
 import CoinIcon from 'mdi-react/CoinIcon'
@@ -8,14 +10,24 @@ import '../styles/css/index.css'
 
 class ChooseFeature extends Component {
     state = {
-        news: false,
-        event: false,
-        donate: false,
-        career: false
+        news: this.props.feature_choosed.news,
+        event: this.props.feature_choosed.event,
+        donate: this.props.feature_choosed.donate,
+        career: this.props.feature_choosed.career
     }
 
     handleSubmit = (e) => {
         e.preventDefault()
+    }
+
+    componentWillUnmount() {
+        const { news, event, donate, career } = this.state
+        if(!news & !event & !donate & !career){
+            this.props.toPage(1)
+            message.error('Please choose one of features!')
+        }
+        else
+            this.props.chooseFeature({news, event, donate, career})
     }
 
     render() {
@@ -105,4 +117,8 @@ const styles = {
     }
 }
 
-export default ChooseFeature
+const mapStateToProps = state => {
+    return { feature_choosed: state.create.get('feature_choosed') }
+}
+
+export default connect(mapStateToProps, {chooseFeature})(ChooseFeature)

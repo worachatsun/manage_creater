@@ -17,7 +17,7 @@ class UploadImage extends Component {
             // Get this url from response in real world.
             getBase64(info.file.originFileObj, imageUrl => {
                 this.setState({ imageUrl })
-                this.props.storeLogo(imageUrl)
+                this.props.storeImage(imageUrl)
             })
         }
     }

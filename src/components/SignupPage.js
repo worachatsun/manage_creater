@@ -1,6 +1,6 @@
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
-import {signUp} from '../actions'
+import {signUp, storeAvatar} from '../actions'
 import {Row, Col, Input, Card, Button, Form, Icon} from 'antd'
 import Header from '../common/Header'
 import UploadImage from './UploadImage'
@@ -49,7 +49,7 @@ class SignupPage extends Component {
                             <Row gutter={16} type={'flex'} justify={'center'}>
                                 <Col span={14}>
                                     <Form onSubmit={this.handleSubmit} className="login-form">
-                                        <Row type={'flex'} justify={'center'} style={{marginBottom: 15}}><UploadImage /></Row>
+                                        <Row type={'flex'} justify={'center'} style={{marginBottom: 15}}><UploadImage storeImage={this.props.storeAvatar}/></Row>
                                         <Row style={{marginBottom: 10}}>Sign up information</Row>
                                         <Row style={{borderBottom: '1px solid #ddd', marginBottom: 30}}>
                                             <Form.Item>
@@ -170,4 +170,4 @@ const mapStateToProps = state => {
     return { avatar: state.auth.get('avatar') }
 }
 
-export default connect(mapStateToProps, {signUp})(Form.create()(SignupPage))
+export default connect(mapStateToProps, {signUp, storeAvatar})(Form.create()(SignupPage))

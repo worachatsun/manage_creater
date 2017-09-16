@@ -1,5 +1,5 @@
 import { Map } from 'immutable'
-import { GET_USER_DATA, USER_LOGOUT, STORE_LOGO } from '../actions/types'
+import { GET_USER_DATA, USER_LOGOUT, STORE_AVATAR } from '../actions/types'
 
 const INITIAL_STATE = Map({
     user: {},
@@ -13,7 +13,7 @@ export default (state = INITIAL_STATE, action) => {
             return state.set('user', action.payload).set('isLoggedIn', true)
         case USER_LOGOUT:
             return state = INITIAL_STATE
-        case STORE_LOGO:
+        case STORE_AVATAR:
             return state.set('avatar', action.payload)
         default:
             return state

@@ -1,5 +1,5 @@
 import axios from 'axios'
-import {STORE_CREATE_DATA, STORE_LOGO} from './types'
+import {STORE_CREATE_DATA, STORE_LOGO, CHOOSED_FEATURE} from './types'
 import { POST_UPLOAD_AVATAR } from '../api'
 
 export const storeCreateData = data => {
@@ -16,18 +16,10 @@ export const storeLogo = img => {
     }
 }
 
-// export const storeLogo = img => {
-//     return dispatch => {
-//         return axios.put(POST_UPLOAD_AVATAR, {
-//             img
-//         }).then(response => {
-//             // localStorage.setItem('key', response.data.token)
-//             // dispatch(saveUserData(response.data.user))
-//         }).catch(err => {
-//             console.log(err)
-//         })
-//     }
-// }
+export const chooseFeature = data => {
+    console.log(data)
+    return dispatchToReducer(CHOOSED_FEATURE, data)
+}
 
 export const dispatchToReducer = (type, payload) => {
     return {

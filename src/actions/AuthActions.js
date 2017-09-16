@@ -1,5 +1,5 @@
 import axios from 'axios'
-import { GET_USER_DATA, USER_LOGOUT } from './types'
+import { GET_USER_DATA, USER_LOGOUT, STORE_AVATAR } from './types'
 import { POST_SIGNIN, GET_USER_DATA_API, POST_REGISTER } from '../api'
 
 export const signIn = data => {
@@ -56,9 +56,18 @@ export const checkUser = () => {
     }
 }
 
+export const storeAvatar = img => {
+    return {
+        type: STORE_AVATAR,
+        payload: img
+    }
+}
+
 export const signOut = () => dispatch => {
     localStorage.clear()
     return dispatch({
         type: USER_LOGOUT
     })
 }
+
+
