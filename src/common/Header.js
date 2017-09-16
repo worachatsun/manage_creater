@@ -1,6 +1,6 @@
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
-import {Affix, Icon, Popover, Row} from 'antd'
+import {Affix, Icon, Popover, Row, Avatar} from 'antd'
 import {Link} from 'react-router-dom'
 import {signOut} from '../actions'
 
@@ -16,6 +16,12 @@ const content = signOut => (
                 <span style={{color: '#FF5A5F'}}><Icon type="logout" style={{marginRight: 10}}/>SIGN OUT</span>
             </Link>
         </Row>
+    </div>
+)
+
+const title = user => (
+    <div>
+        <div style={{fontSize: 15}}>{user.username}</div>
     </div>
 )
 
@@ -37,12 +43,11 @@ class Header extends Component{
                     </div>
                     <div style={{color: 'white', fontSize: 13, display: 'flex', alignItems: 'center'}}>
                         {this.props.isLoggedIn?
-                            <Popover content={content(this.props.signOut)} title="Your Profile">
-                                <Link to='/profile' style={{marginRight: 20, color: 'white'}}>
-                                    <div style={{marginRight: 20, width: 30, backgroundColor: 'white', height: 30, borderRadius: 15, display: 'flex', justifyContent: 'center', alignItems: 'center'}}>
-                                        <Icon type="rocket" style={{ fontSize: 16, color: '#FF5A5F' }}/>
-                                    </div>
-                                </Link>
+                            <Popover content={content(this.props.signOut)} title={title(this.props.user)}>
+                                <div style={{marginRight: 20, width: 30, backgroundColor: 'white', height: 30, borderRadius: 15, display: 'flex', justifyContent: 'center', alignItems: 'center'}}>
+                                    {/* <Icon type="rocket" style={{ fontSize: 16, color: '#FF5A5F' }}/> */}
+                                    <Avatar src={this.props.user.avatar} />
+                                </div>
                             </Popover>
                         :
                             <div>
@@ -58,7 +63,7 @@ class Header extends Component{
 }
 
 const mapStateToProps = state => {
-    return { isLoggedIn: state.auth.get('isLoggedIn') }
+    return { user: state.auth.get('user'), isLoggedIn: state.auth.get('isLoggedIn') }
 }
 
 

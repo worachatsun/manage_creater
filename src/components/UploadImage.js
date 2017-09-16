@@ -2,6 +2,7 @@ import React, {Component} from 'react'
 import {connect} from 'react-redux'
 import {storeLogo} from '../actions'
 import {Upload, Icon, message, Spin} from 'antd'
+import {POST_UPLOAD_DISPLAY} from '../api'
 import '../styles/css/index.css'
 
 class UploadImage extends Component {
@@ -35,7 +36,7 @@ class UploadImage extends Component {
                 className="avatar-uploader"
                 name="avatar"
                 showUploadList={false}
-                action="//jsonplaceholder.typicode.com/posts/"
+                action={POST_UPLOAD_DISPLAY}
                 beforeUpload={beforeUpload}
                 onChange={this.handleChange}
                 style={{display: 'flex', alignItems: 'center', justifyContent: 'center'}}

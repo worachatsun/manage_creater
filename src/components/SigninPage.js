@@ -61,9 +61,4 @@ class SigninPage extends Component {
     }
 }
 
-const mapStateToProps = state => {
-    console.log(state.auth.get('user'))
-    return {}
-}
-
-export default connect(mapStateToProps, {signIn})(Form.create()(SigninPage))
+export default connect(null, {signIn})(Form.create()(SigninPage))
