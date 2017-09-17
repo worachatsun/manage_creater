@@ -1,6 +1,7 @@
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
 import {Row, Col, Button, Steps, message, Icon} from 'antd'
+import {saveAppInfo} from '../actions'
 import Header from '../common/Header'
 import InsertInformation from './InsertInformation'
 import ChooseFeature from './ChooseFeature'
@@ -42,8 +43,17 @@ class CreateAppComponent extends Component {
         const current = this.state.current - 1
         this.setState({ current })
     }
+
+    done = () => {
+        const { feature_choosed, logo, create_data, user } = this.props
+
+        this.props.saveAppInfo({feature_choosed, logo, create_data, createdBy: user._id})
+        message.success('Processing complete!')
+    }
+
     render() {
         const { current } = this.state
+        
         return (
             <div>
                 <Header />
@@ -69,7 +79,7 @@ class CreateAppComponent extends Component {
                             {
                                 this.state.current === this.steps.length - 1
                                 &&
-                                <Button type="primary" onClick={() => message.success('Processing complete!')}>Done</Button>
+                                <Button type="primary" onClick={this.done}>Done</Button>
                             }
                         </div>
                     </Col>
@@ -80,7 +90,12 @@ class CreateAppComponent extends Component {
 }
 
 const mapStateToProps = state => {
-    return { create_data: state.create.get('create_data') }
+    return { 
+        create_data: state.create.get('create_data'),
+        feature_choosed: state.create.get('feature_choosed'),
+        logo: state.create.get('logo'),
+        user: state.auth.get('user')
+    }
 }
 
-export default connect(mapStateToProps)(CreateAppComponent)
+export default connect(mapStateToProps, {saveAppInfo})(CreateAppComponent)
