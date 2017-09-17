@@ -1,7 +1,7 @@
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
 import {Row, Col, Button, Steps, message, Icon} from 'antd'
-import {Header} from '../common'
+import Header from '../common/Header'
 import InsertInformation from './InsertInformation'
 import ChooseFeature from './ChooseFeature'
 import ExportApp from './ExportApp'
@@ -13,11 +13,11 @@ class CreateAppComponent extends Component {
         super(props)
         this.steps = [{
             title: 'Insert information',
-            content: <InsertInformation firstPage={() => this.setState({current: 0})}/>,
+            content: <InsertInformation toPage={page => this.setState({current: page})}/>,
             logo: 'edit'
         }, {
             title: 'Choose feature',
-            content: <ChooseFeature />,
+            content: <ChooseFeature toPage={page => this.setState({current: page})}/>,
             logo: 'appstore'
         }, {
             title: 'Genarate App',
