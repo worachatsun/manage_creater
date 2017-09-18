@@ -1,6 +1,6 @@
 import axios from 'axios'
-import {STORE_CREATE_DATA, STORE_LOGO, CHOOSED_FEATURE} from './types'
-import { POST_APP_INFO } from '../api'
+import {STORE_CREATE_DATA, STORE_LOGO, CHOOSED_FEATURE, STORE_ALL_APP} from './types'
+import { POST_APP_INFO, POST_USER_APP } from '../api'
 
 export const storeCreateData = data => {
     return {
@@ -40,6 +40,18 @@ export const saveAppInfo = data => {
             console.log(response)
             // localStorage.setItem('key', response.data.token)
             // dispatch(saveUserData(response.data.user))
+        }).catch(err => {
+            console.log(err)
+        })
+    }
+}
+
+export const getUserApp = id => {
+    return dispatch => {
+        return axios.post(POST_USER_APP, {createdBy: id}, {
+            headers: { "Authorization": localStorage.getItem('key') }
+        }).then(response => {
+            dispatch(dispatchToReducer(STORE_ALL_APP, response.data.apps))
         }).catch(err => {
             console.log(err)
         })

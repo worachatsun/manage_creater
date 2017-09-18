@@ -47,8 +47,9 @@ class CreateAppComponent extends Component {
     done = () => {
         const { feature_choosed, logo, create_data, user } = this.props
 
-        this.props.saveAppInfo({feature_choosed, logo, create_data, createdBy: user._id})
-        message.success('Processing complete!')
+        this.props.saveAppInfo({feature_choosed, logo, create_data, createdBy: user._id}).then(() => {
+            message.success('Processing complete!')
+        })
     }
 
     render() {

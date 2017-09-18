@@ -7,3 +7,4 @@ export const POST_UPLOAD_DISPLAY = `${API_URL}/api/displayUpload`
 export const POST_UPLOAD_AVATAR = `${API_URL}/api/uploadAvatar`
 
 export const POST_APP_INFO = `${API_URL}/api/saveAppInfo`
+export const POST_USER_APP = `${API_URL}/api/getAppByUser`

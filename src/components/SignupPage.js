@@ -1,14 +1,14 @@
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
 import {signUp, storeAvatar} from '../actions'
-import {Row, Col, Input, Card, Button, Form, Icon} from 'antd'
+import {Row, Col, Input, Card, Button, Form} from 'antd'
 import Header from '../common/Header'
 import UploadImage from './UploadImage'
 
 class SignupPage extends Component {
     state = {
         confirmDirty: false,
-      }
+    }
 
     handleSubmit = (e) => {
         e.preventDefault()
@@ -145,7 +145,7 @@ class SignupPage extends Component {
                                                     {getFieldDecorator('tel', {
                                                         rules: [{ required: true, message: 'Please input your telephone number!' }],
                                                     })(
-                                                        <Input type={'number'} placeholder={'tel'}/>
+                                                        <Input type={'number'} placeholder={'Tel'}/>
                                                     )}                                                            
                                                 </Form.Item>
                                             </Col>

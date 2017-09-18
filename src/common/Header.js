@@ -8,12 +8,17 @@ const content = signOut => (
     <div>
         <Row style={{borderBottom: '1px solid #ddd', marginBottom: 5, paddingBottom: 5}}>
             <Link to={'/profile'}>
-                <span style={{color: '#FF5A5F'}}><Icon type="user" style={{marginRight: 10}}/>PROFILE</span>
+                <span style={{color: '#FF5A5F'}}><Icon type="user" style={{marginRight: 10}}/>Profile</span>
+            </Link>
+        </Row>
+        <Row style={{marginBottom: 3, marginTop: 3}}>
+            <Link to={'/setting'} className={'link'}>
+                <span style={{color: '#FF5A5F'}}><Icon type="setting" style={{marginRight: 10}}/>Settings</span>
             </Link>
         </Row>
         <Row>
             <Link to={'/'} onClick={() => signOut()} className={'link'}>
-                <span style={{color: '#FF5A5F'}}><Icon type="logout" style={{marginRight: 10}}/>SIGN OUT</span>
+                <span style={{color: '#FF5A5F'}}><Icon type="logout" style={{marginRight: 10}}/>Sign out</span>
             </Link>
         </Row>
     </div>
@@ -33,7 +38,8 @@ class Header extends Component{
                     <div style={{color: 'white', fontSize: 13}}>
                         <Link to="/" style={{marginRight: 20, color: 'white'}}>HOME</Link>
                         {this.props.isLoggedIn?
-                            <Link to="/create" style={{color: 'white'}}>CREATE APP</Link>
+                            <span style={{padding: 6, backgroundColor: 'white', borderRadius: 6}}><Link to="/create" style={{color: '#FF5A5F'}}>CREATE APP</Link></span>
+                            
                         :
                             <div/>
                         }
@@ -45,7 +51,6 @@ class Header extends Component{
                         {this.props.isLoggedIn?
                             <Popover content={content(this.props.signOut)} title={title(this.props.user)}>
                                 <div style={{marginRight: 20, width: 30, backgroundColor: 'white', height: 30, borderRadius: 15, display: 'flex', justifyContent: 'center', alignItems: 'center'}}>
-                                    {/* <Icon type="rocket" style={{ fontSize: 16, color: '#FF5A5F' }}/> */}
                                     <Avatar src={this.props.user.avatar} />
                                 </div>
                             </Popover>
