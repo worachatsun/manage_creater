@@ -108,7 +108,7 @@ class ProfileSettingPage extends Component {
                 </Row>            
                 <Form.Item>
                     <Row style={{marginBottom: 10}} type={'flex'} justify={'center'}>
-                        <Col><Button htmlType="submit" icon={'login'} type={'primary'}>Sign Up</Button></Col>
+                        <Col><Button htmlType="submit" icon={'login'} type={'primary'}>Change profile</Button></Col>
                     </Row>
                 </Form.Item>
             </Form>

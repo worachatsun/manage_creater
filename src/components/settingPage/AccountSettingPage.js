@@ -1,4 +1,6 @@
 import React, {Component} from 'react'
+import {connect} from 'react-redux'
+import {changePassword} from '../../actions'
 import {Row, Col, Card, Menu, Icon, Form, Input, Button} from 'antd'
 
 class AccountSettingPage extends Component {
@@ -10,15 +12,14 @@ class AccountSettingPage extends Component {
         e.preventDefault()
         this.props.form.validateFields((err, values) => {
             if (!err) {
-                values.avatar = this.props.avatar || ''
-                this.props.signUp(values)
+                this.props.changePassword(values, this.props.user._id)
             }
         })
     }
 
     checkPassword = (rule, value, callback) => {
         const form = this.props.form;
-        if (value && value !== form.getFieldValue('new_password')) {
+        if (value && value !== form.getFieldValue('newPassword')) {
           callback('Two passwords that you enter is inconsistent!');
         } else {
           callback()
@@ -41,7 +42,7 @@ class AccountSettingPage extends Component {
                 <Row style={{borderBottom: '1px solid #ddd', marginBottom: 15, fontSize: 20, paddingBottom: 5}}>Change password</Row>
                 <Row>
                     <Form.Item>                                                                                            
-                            {getFieldDecorator('old_password', {
+                            {getFieldDecorator('oldPassword', {
                                 rules: [{ required: true, message: 'Please input your firstname!' }],
                             })(
                                 <Input type="password" placeholder={'Old password'}/>
@@ -49,7 +50,7 @@ class AccountSettingPage extends Component {
                     </Form.Item>
                     <Form.Item>                                                
                         <Col >
-                            {getFieldDecorator('new_password', {
+                            {getFieldDecorator('newPassword', {
                                 rules: [{ 
                                     required: true, message: 'Please input your password!' }
                                 , {
@@ -75,7 +76,7 @@ class AccountSettingPage extends Component {
                     </Form.Item>
                     <Form.Item>
                         <Row style={{marginBottom: 10}} type={'flex'} justify={'center'}>
-                            <Col><Button htmlType="submit" icon={'login'} type={'primary'}>Sign Up</Button></Col>
+                            <Col><Button htmlType="submit" icon={'login'} type={'primary'}>Change password</Button></Col>
                         </Row>
                     </Form.Item>
                 </Row>
@@ -84,4 +85,8 @@ class AccountSettingPage extends Component {
     }
 }
 
-export default Form.create()(AccountSettingPage)
+const mapStateToProps = state => {
+    return { user: state.auth.get('user') }
+}
+
+export default connect(mapStateToProps, {changePassword})(Form.create()(AccountSettingPage))

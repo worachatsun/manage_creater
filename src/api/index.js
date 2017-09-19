@@ -8,3 +8,4 @@ export const POST_UPLOAD_AVATAR = `${API_URL}/api/uploadAvatar`
 
 export const POST_APP_INFO = `${API_URL}/api/saveAppInfo`
 export const POST_USER_APP = `${API_URL}/api/getAppByUser`
+export const POST_CHANGR_PASSWORD = `${API_URL}/auth/changePassword`
