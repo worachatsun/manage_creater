@@ -38,7 +38,7 @@ class ChooseFeature extends Component {
                         <div onClick={() => this.setState({news: !this.state.news})}>
                             <Card style={this.state.news?styles.selectedFeature:{}}>
                                 <div style={styles.middleContent}>
-                                    <NewspaperIcon className="icon-color" style={styles.imgStyle} />
+                                    <NewspaperIcon fill={this.state.news?'#FFF':'#000'}  className="icon-color" style={styles.imgStyle} />
                                 </div>
                                 <div style={styles.middleContent}>
                                     <p style={{fontSize: '1.3em', marginTop: 20}}>NEWS</p>
@@ -51,7 +51,7 @@ class ChooseFeature extends Component {
                         <div onClick={() => this.setState({event: !this.state.event})}>
                             <Card style={this.state.event?styles.selectedFeature:{}}>
                                 <div style={styles.middleContent}>
-                                    <CalendarTextIcon style={styles.imgStyle} />
+                                    <CalendarTextIcon fill={this.state.event?'#FFF':'#000'}  style={styles.imgStyle} />
                                 </div>
                                 <div style={styles.middleContent}>
                                     <p style={{fontSize: '1.3em', marginTop: 20}}>EVENT</p>
@@ -64,7 +64,7 @@ class ChooseFeature extends Component {
                         <div onClick={() => this.setState({donate: !this.state.donate})}>
                             <Card style={this.state.donate?styles.selectedFeature:{}}>
                                 <div style={styles.middleContent}>
-                                    <CoinIcon style={styles.imgStyle}/>
+                                    <CoinIcon fill={this.state.donate?'#FFF':'#000'} style={styles.imgStyle}/>
                                 </div>
                                 <div style={styles.middleContent}>
                                     <p style={{fontSize: '1.3em', marginTop: 20}}>DONATE</p>
@@ -81,7 +81,7 @@ class ChooseFeature extends Component {
                         <div onClick={() => this.setState({career: !this.state.career})}>
                             <Card style={this.state.career?styles.selectedFeature:{}}>
                                 <div style={styles.middleContent}>
-                                    <WorkerIcon style={styles.imgStyle} />
+                                    <WorkerIcon fill={this.state.career?'#FFF':'#000'}  style={styles.imgStyle} />
                                 </div>
                                 <div style={styles.middleContent}>
                                     <p style={{fontSize: '1.3em', marginTop: 20}}>CAREER</p>

@@ -11,6 +11,7 @@ import CreateAppComponent from '../components/CreateAppComponent'
 import SigninPage from '../components/SigninPage'
 import SignupPage from '../components/SignupPage'
 import ProfilePage from '../components/ProfilePage'
+import SettingsPage from '../components/SettingsPage'
 import { checkUser } from '../actions'
 import 'antd/dist/antd.css'
 
@@ -56,6 +57,7 @@ class Router extends Component {
                     <Route exact path={'/'} component={HomeComponent}/>
                     <PrivateRoute path={'/create'} component={CreateAppComponent}/>
                     <PrivateRoute path={'/profile'} component={ProfilePage}/>
+                    <PrivateRoute path={'/setting'} component={SettingsPage}/>
                     <AuthRoute path={'/auth/signin'} component={SigninPage}/>
                     <AuthRoute path={'/auth/signup'} component={SignupPage}/>
                 </Switch>

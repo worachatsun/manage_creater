@@ -1,6 +1,6 @@
 import axios from 'axios'
 import { GET_USER_DATA, USER_LOGOUT, STORE_AVATAR } from './types'
-import { POST_SIGNIN, GET_USER_DATA_API, POST_REGISTER } from '../api'
+import { POST_SIGNIN, GET_USER_DATA_API, POST_REGISTER, POST_CHANGR_PASSWORD } from '../api'
 
 export const signIn = data => {
     const { username, password } = data
@@ -52,6 +52,21 @@ export const checkUser = () => {
             headers: { "Authorization": localStorage.getItem('key') }
         }).then(response => {
             dispatch(saveUserData(response.data.user))
+        })
+    }
+}
+
+export const changePassword = (data, _id) => {
+    const { newPassword, oldPassword } = data
+    return dispatch => {
+        return axios.post(POST_CHANGR_PASSWORD, {
+            _id, 
+            oldPassword, 
+            newPassword
+        }, {
+            headers: { "Authorization": localStorage.getItem('key') }
+        }).then(response => {
+            dispatch(signOut())
         })
     }
 }

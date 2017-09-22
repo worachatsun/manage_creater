@@ -24,7 +24,7 @@ class SigninPage extends Component {
                 <Row style={{marginTop: 20}} type={'flex'} justify={'center'}>
                     <Col span={18}>
                         <Card title="Please Sign in">
-                            <Row gutter={16}>
+                            <Row gutter={16} type={'flex'} justify={'center'}>
                                 <Col span={14}>
                                     <Form onSubmit={this.handleSubmit} className="login-form">
                                         <Form.Item>
@@ -44,13 +44,11 @@ class SigninPage extends Component {
                                         </Form.Item>
                                         <Form.Item>
                                             <Row style={{marginBottom: 10}} type={'flex'} justify={'space-between'}>
-                                                <Col>Forget Password</Col>
+                                                <Col></Col>
                                                 <Col><Button htmlType="submit" icon={'login'} type={'primary'}>Sign In</Button></Col>
                                             </Row>
                                         </Form.Item>
                                     </Form>                                
-                                </Col>
-                                <Col span={10} style={{borderLeft: '1px solid #ddd', height: 30}}>
                                 </Col>
                             </Row>
                         </Card>

@@ -1,9 +1,23 @@
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
+import {getUserApp} from '../actions'
 import {Row, Col, Card, Icon} from 'antd'
 import Header from '../common/Header'
+import CalendarTextIcon from 'mdi-react/CalendarTextIcon'
+import CoinIcon from 'mdi-react/CoinIcon'
+import WorkerIcon from 'mdi-react/WorkerIcon'
+import NewspaperIcon from 'mdi-react/NewspaperIcon'
 
 class ProfilePage extends Component {
+    state = {
+        loading: true
+    }
+    componentWillMount() {
+        this.props.getUserApp(this.props.user._id).then(() => {
+            this.setState({loading: false})
+        })
+    }
+
     render() {
         const { email, firstname, lastname, location, university, username, avatar } = this.props.user
         
@@ -15,7 +29,7 @@ class ProfilePage extends Component {
                         <Card>
                             <Row gutter={16}>
                                 <Col span={24} style={{display: 'flex', justifyContent: 'center'}}>
-                                    <img style={{width: 210, height: 200, borderRadius: 5}} src={avatar} alt={'Profile'}/>
+                                    <img style={{width: 200, height: 250, borderRadius: 6}} src={avatar} alt={'Profile'}/>
                                 </Col>
                             </Row>
                             <Row gutter={16}>
@@ -32,10 +46,48 @@ class ProfilePage extends Component {
                         </Card>
                     </Col>
                     <Col span={15}>
-                        <Card>
-                            <Row gutter={16}>
-                                
+                        <Card loading={this.state.loading}>
+                            <Row style={styles.appBorder} gutter={16}>
+                                <Col>
+                                    <div style={{fontSize: 16}}>Your application</div>
+                                </Col>
                             </Row>
+                            {this.props.all_user_app.map((app, index) => (
+                                <Row key={index} style={index===this.props.all_user_app.length-1?styles.appWithoutBorder:styles.appBorder} gutter={16}>
+                                    <Col>
+                                        <img src={app.logo} alt={'logo'} style={{width: 75, height: 75}}/>
+                                    </Col>
+                                    <Col>
+                                        <Row>                                            
+                                            <Col>University name: {app.uni_name}</Col>
+                                        </Row>
+                                        <Row>                                            
+                                            <Col>University abbreviation: {app.uni_abb}</Col>
+                                        </Row>
+                                        {app.uni_th_name===''?'':
+                                            <Row>
+                                                <Col>ชื่อมหาวิทยาลัย: {app.uni_th_name}</Col>
+                                            </Row>
+                                        }
+                                        {app.uni_th_abb===''?'':
+                                            <Row>                                                
+                                                <Col>ชื่อย่อมหาวิทยาลัย: {app.uni_th_abb}</Col>
+                                            </Row>
+                                        }
+                                    </Col>
+                                    <Col>
+                                        {console.log(app.features)}
+                                        <Row type={'flex'}>                                            
+                                            <Col style={{margin: 3}}><NewspaperIcon fill={app.features.news?'#FF5A5F':'#DDD'}/></Col>
+                                            <Col style={{margin: 3}}><CalendarTextIcon fill={app.features.event?'#FF5A5F':'#DDD'}/></Col>
+                                        </Row>
+                                        <Row type={'flex'}>                                        
+                                            <Col style={{margin: 3}}><WorkerIcon fill={app.features.career?'#FF5A5F':'#DDD'}/></Col>
+                                            <Col style={{margin: 3}}><CoinIcon fill={app.features.donate?'#FF5A5F':'#DDD'}/></Col>
+                                        </Row>
+                                    </Col>
+                                </Row>
+                            ))}
                         </Card>
                     </Col>
                 </Row>
@@ -44,8 +96,16 @@ class ProfilePage extends Component {
     }
 }
 
-const mapStateToProps = state => {
-    return { user: state.auth.get('user'), isLoggedIn: state.auth.get('isLoggedIn') }
+const styles = {
+    appBorder: {borderBottom: '1px solid #ddd', display: 'flex', alignItems: 'center', paddingBottom: 10, marginBottom: 20, justifyContent: 'space-between'},
+    appWithoutBorder: {display: 'flex', alignItems: 'center', justifyContent: 'space-between'}
 }
 
-export default connect(mapStateToProps)(ProfilePage)
+const mapStateToProps = state => {
+    return { 
+        all_user_app: state.create.get('all_user_app'),
+        user: state.auth.get('user'), 
+        isLoggedIn: state.auth.get('isLoggedIn') }
+}
+
+export default connect(mapStateToProps, {getUserApp})(ProfilePage)

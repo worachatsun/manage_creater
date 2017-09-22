@@ -1,5 +1,5 @@
 import { Map } from 'immutable'
-import {STORE_CREATE_DATA, STORE_LOGO, CHOOSED_FEATURE} from '../actions/types'
+import {STORE_CREATE_DATA, STORE_LOGO, CHOOSED_FEATURE, STORE_ALL_APP} from '../actions/types'
 
 const INITIAL_STATE = Map({
     create_data: {
@@ -7,7 +7,7 @@ const INITIAL_STATE = Map({
         uni_abb: '',
         uni_th_name: '',
         uni_th_abb: '',
-        color: ''
+        color: '#FF5A5F'
     },
     logo: '',
     feature_choosed: {
@@ -15,7 +15,8 @@ const INITIAL_STATE = Map({
         event: true,
         donate: true,
         career: true
-    }
+    },
+    all_user_app: []
 })
 
 export default (state = INITIAL_STATE, action) => {
@@ -26,6 +27,8 @@ export default (state = INITIAL_STATE, action) => {
             return state.set('logo', action.payload)
         case CHOOSED_FEATURE:
             return state.set('feature_choosed', action.payload)
+        case STORE_ALL_APP:
+            return state.set('all_user_app', action.payload)
         default:
             return state
     }
