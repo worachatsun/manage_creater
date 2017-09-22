@@ -101,8 +101,7 @@ export const updateUserData = (data, _id) => {
         }, {
             headers: { "Authorization": localStorage.getItem('key') }
         }).then(response => {
-            console.log(response)
-            // dispatch(signOut())
+            dispatch(saveUserData(response.data.user))
         })
     }
 }

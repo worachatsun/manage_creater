@@ -7,7 +7,7 @@ import {updateUserData} from '../../actions'
 class ProfileSettingPage extends Component {
     state = {
         confirmDirty: false,
-        logo: ''
+        logo: this.props.user.avatar || ''
     }
 
     setLogo = img => {
@@ -80,7 +80,7 @@ class ProfileSettingPage extends Component {
                         </Form.Item>
                     </Col>
                     <Col span={10} style={{display: 'flex', justifyContent: 'center', alignItems: 'center', paddingTop: 25}}>
-                        <UploadImage storeImage={this.setLogo} imageUrl={avatar}/>
+                        <UploadImage storeImage={this.setLogo} imageUrl={this.state.logo}/>
                     </Col>
                 </Row>
                 <Row>
