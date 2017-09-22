@@ -7,7 +7,8 @@ import '../styles/css/index.css'
 
 class UploadImage extends Component {
     state = {
-        loading_img: false
+        loading_img: false,
+        imageUrl: this.props.imageUrl || ''
     }
     
     handleChange = (info) => {
