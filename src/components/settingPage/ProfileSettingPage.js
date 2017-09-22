@@ -1,6 +1,6 @@
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
-import {Row, Col, Card, Menu, Icon, Form, Input, Button} from 'antd'
+import {Row, Col, Form, Input, Button} from 'antd'
 import UploadImage from '../UploadImage'
 
 class ProfileSettingPage extends Component {

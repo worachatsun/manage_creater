@@ -7,7 +7,7 @@ const INITIAL_STATE = Map({
         uni_abb: '',
         uni_th_name: '',
         uni_th_abb: '',
-        color: ''
+        color: '#FF5A5F'
     },
     logo: '',
     feature_choosed: {
