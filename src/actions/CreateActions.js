@@ -1,6 +1,6 @@
 import axios from 'axios'
 import {STORE_CREATE_DATA, STORE_LOGO, CHOOSED_FEATURE, STORE_ALL_APP} from './types'
-import { POST_APP_INFO, POST_USER_APP } from '../api'
+import { POST_APP_INFO, POST_USER_APP, POST_DOWNLOAD_ANDROID } from '../api'
 
 export const storeCreateData = data => {
     return {
@@ -52,6 +52,19 @@ export const getUserApp = id => {
             headers: { "Authorization": localStorage.getItem('key') }
         }).then(response => {
             dispatch(dispatchToReducer(STORE_ALL_APP, response.data.apps))
+        }).catch(err => {
+            console.log(err)
+        })
+    }
+}
+
+export const downloadAndroid = _id => {
+    return dispatch => {
+        return axios.get(POST_DOWNLOAD_ANDROID, {
+            headers: { "Authorization": localStorage.getItem('key') }
+        }).then(response => {
+            console.log(response)
+            //dispatch(dispatchToReducer(STORE_ALL_APP, response.data.apps))
         }).catch(err => {
             console.log(err)
         })

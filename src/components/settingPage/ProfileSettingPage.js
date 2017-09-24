@@ -1,5 +1,6 @@
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
+import {Redirect, Route} from 'react-router-dom'
 import {Row, Col, Form, Input, Button} from 'antd'
 import UploadImage from '../UploadImage'
 import {updateUserData} from '../../actions'
@@ -7,7 +8,8 @@ import {updateUserData} from '../../actions'
 class ProfileSettingPage extends Component {
     state = {
         confirmDirty: false,
-        logo: this.props.user.avatar || ''
+        logo: this.props.user.avatar || '',
+        redirect: false
     }
 
     setLogo = img => {
@@ -19,7 +21,9 @@ class ProfileSettingPage extends Component {
         this.props.form.validateFields((err, values) => {
             if (!err) {
                 values.avatar = this.state.logo || ''
-                this.props.updateUserData(values, this.props.user._id)
+                this.props.updateUserData(values, this.props.user._id).then(() => {
+                    this.setState({redirect: true})
+                })
             }
         })
     }
@@ -28,6 +32,12 @@ class ProfileSettingPage extends Component {
         const { getFieldDecorator } = this.props.form
         const {email, avatar, firstname, lastname, location, tel, university, username} = this.props.user
         
+        if (this.state.redirect) {
+            return (
+                <Redirect to={'/profile'}/>
+            )
+        }
+
         return (
             <Form onSubmit={this.handleSubmit} className="login-form">
                 <Row style={{borderBottom: '1px solid #ddd', marginBottom: 15, fontSize: 20, paddingBottom: 5}}>Change profile</Row>

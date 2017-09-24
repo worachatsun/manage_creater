@@ -49,7 +49,7 @@ class Header extends Component{
                     </div>
                     <div style={{color: 'white', fontSize: 13, display: 'flex', alignItems: 'center'}}>
                         {this.props.isLoggedIn?
-                            <Popover content={content(this.props.signOut)} title={title(this.props.user)}>
+                            <Popover placement="bottom" content={content(this.props.signOut)} title={title(this.props.user)}>
                                 <div style={{marginRight: 20, width: 30, backgroundColor: 'white', height: 30, borderRadius: 15, display: 'flex', justifyContent: 'center', alignItems: 'center'}}>
                                     <Avatar src={this.props.user.avatar} />
                                 </div>
