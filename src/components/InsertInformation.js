@@ -74,7 +74,7 @@ class InsertInformation extends Component {
                                         <div style={ styles.cover } onClick={ this.handleClose }/>
                                         <BlockPicker color={ this.state.color } onChangeComplete={ this.handleChangeComplete }/>
                                     </div>:''}
-                                </Col>
+                                    </Col>
                                 </Row>
                             </Form.Item>
                         </Form>

@@ -45,7 +45,7 @@ class Header extends Component{
                         }
                     </div>
                     <div style={{marginRight: 50, marginLeft: 50, width: 30, backgroundColor: 'white', height: 30, borderRadius: 15, display: 'flex', justifyContent: 'center', alignItems: 'center'}}>
-                        <Icon type="rocket" style={{ fontSize: 16, color: '#FF5A5F' }}/>
+                        <img src={require('../styles/images/appaca.ico')} style={{ width: 20, color: '#FF5A5F' }}/>
                     </div>
                     <div style={{color: 'white', fontSize: 13, display: 'flex', alignItems: 'center'}}>
                         {this.props.isLoggedIn?

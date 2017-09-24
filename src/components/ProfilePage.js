@@ -30,7 +30,7 @@ class ProfilePage extends Component {
                         <Card>
                             <Row gutter={16}>
                                 <Col span={24} style={{display: 'flex', justifyContent: 'center'}}>
-                                    <img style={{width: 200, height: 250, borderRadius: 6}} src={avatar} alt={'Profile'}/>
+                                    <img style={{width: 200, height: 200, borderRadius: 6}} src={avatar} alt={'Profile'}/>
                                 </Col>
                             </Row>
                             <Row gutter={16}>
@@ -40,8 +40,8 @@ class ProfilePage extends Component {
                                         <div style={{fontSize: '1em', marginTop: -4, color: '#bbb'}}>{username}</div>
                                     </div>
                                     <div style={{marginTop: 5, paddingTop: 5, borderTop: '1px solid #ddd'}}><Icon type={'mail'}/> {email}</div>
-                                    <div style={{marginTop: 5}}><Icon type={'mail'}/> {location}</div>
-                                    <div style={{marginTop: 5}}><Icon type={'mail'}/> {university}</div>
+                                    <div style={{marginTop: 5}}><Icon type={'environment-o'}/> {location}</div>
+                                    <div style={{marginTop: 5}}><Icon type={'home'}/> {university}</div>
                                 </Col>
                             </Row>
                         </Card>
@@ -50,7 +50,7 @@ class ProfilePage extends Component {
                         <Card loading={this.state.loading}>
                             <Row style={styles.appBorder} gutter={16}>
                                 <Col>
-                                    <div style={{fontSize: 16}}>Your application</div>
+                                    <div style={{fontSize: '2em', color: '#114B5F'}}>YOUR APPLICATION</div>
                                 </Col>
                             </Row>
                             {this.props.all_user_app.map((app, index) => (

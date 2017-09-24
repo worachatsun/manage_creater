@@ -1,6 +1,7 @@
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
-import {Row, Col, Button, Steps, message, Icon} from 'antd'
+import {Redirect} from 'react-router-dom'
+import {Row, Col, Button, Steps, message, Icon, Spin} from 'antd'
 import {saveAppInfo} from '../actions'
 import Header from '../common/Header'
 import InsertInformation from './InsertInformation'
@@ -29,6 +30,8 @@ class CreateAppComponent extends Component {
     
     state = {
         current: 0,
+        redirect: false,
+        loading: false
     }
 
     storeCreateInfo = create_info => {
@@ -47,13 +50,21 @@ class CreateAppComponent extends Component {
     done = () => {
         const { feature_choosed, logo, create_data, user } = this.props
 
+        this.setState({loading: true})
         this.props.saveAppInfo({feature_choosed, logo, create_data, createdBy: user._id}).then(() => {
             message.success('Processing complete!')
+            this.setState({redirect: true, loading: false})
         })
     }
 
     render() {
         const { current } = this.state
+
+        if (this.state.redirect) {
+            return (
+                <Redirect to={'/profile'}/>
+            )
+        }
         
         return (
             <div>
@@ -63,7 +74,9 @@ class CreateAppComponent extends Component {
                         <Steps current={current}>
                             {this.steps.map(item => <Step key={item.title} icon={<Icon type={item.logo} />} title={item.title} />)}
                         </Steps>
-                        <div className="steps-content">{this.steps[this.state.current].content}</div>
+                        <Spin spinning={this.state.loading} size="large" tip="Waiting for generate your application..." delay={300} >
+                            <div className="steps-content">{this.steps[this.state.current].content}</div>
+                        </Spin>
                         <div className="steps-action" style={{display: 'flex', justifyContent: 'center'}}>
                             {
                                 this.state.current > 0
