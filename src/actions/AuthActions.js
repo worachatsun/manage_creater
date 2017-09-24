@@ -1,6 +1,6 @@
 import axios from 'axios'
 import { GET_USER_DATA, USER_LOGOUT, STORE_AVATAR } from './types'
-import { POST_SIGNIN, GET_USER_DATA_API, POST_REGISTER, POST_CHANGR_PASSWORD } from '../api'
+import { POST_SIGNIN, GET_USER_DATA_API, POST_REGISTER, POST_CHANGR_PASSWORD, PUT_UPDATE_USER } from '../api'
 
 export const signIn = data => {
     const { username, password } = data
@@ -86,3 +86,22 @@ export const signOut = () => dispatch => {
 }
 
 
+export const updateUserData = (data, _id) => {
+    const { tel, avatar, email, firstname, lastname, location, university} = data
+    return dispatch => {
+        return axios.put(PUT_UPDATE_USER, {
+            _id,
+            tel, 
+            avatar, 
+            email, 
+            firstname, 
+            lastname, 
+            location, 
+            university
+        }, {
+            headers: { "Authorization": localStorage.getItem('key') }
+        }).then(response => {
+            dispatch(saveUserData(response.data.user))
+        })
+    }
+}

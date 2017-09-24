@@ -81,7 +81,7 @@ class InsertInformation extends Component {
                     </Col>
                     <Col style={styles.middleContent} span={8} pull={16}>
                         <Row><Col style={{fontSize: '2em', marginBottom: 10}}>University logo</Col></Row>
-                        <UploadImage storeImage={this.props.storeLogo} />
+                        <UploadImage storeImage={this.props.storeLogo} imageUrl={this.props.logo}/>
                     </Col>
                 </Row>
             </div>

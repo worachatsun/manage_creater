@@ -1,5 +1,6 @@
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
+import {Link} from 'react-router-dom'
 import {getUserApp} from '../actions'
 import {Row, Col, Card, Icon} from 'antd'
 import Header from '../common/Header'
@@ -53,40 +54,44 @@ class ProfilePage extends Component {
                                 </Col>
                             </Row>
                             {this.props.all_user_app.map((app, index) => (
-                                <Row key={index} style={index===this.props.all_user_app.length-1?styles.appWithoutBorder:styles.appBorder} gutter={16}>
-                                    <Col>
-                                        <img src={app.logo} alt={'logo'} style={{width: 75, height: 75}}/>
-                                    </Col>
-                                    <Col>
-                                        <Row>                                            
-                                            <Col>University name: {app.uni_name}</Col>
-                                        </Row>
-                                        <Row>                                            
-                                            <Col>University abbreviation: {app.uni_abb}</Col>
-                                        </Row>
-                                        {app.uni_th_name===''?'':
-                                            <Row>
-                                                <Col>ชื่อมหาวิทยาลัย: {app.uni_th_name}</Col>
+                                <Link key={index} to={{
+                                    pathname: '/detail',
+                                    state: { app }
+                                }}>
+                                    <Row style={index===this.props.all_user_app.length-1?styles.appWithoutBorder:styles.appBorder} gutter={16}>
+                                        <Col>
+                                            <img src={app.logo} alt={'logo'} style={{width: 75, height: 75}}/>
+                                        </Col>
+                                        <Col>
+                                            <Row>                                            
+                                                <Col>University name: {app.uni_name}</Col>
                                             </Row>
-                                        }
-                                        {app.uni_th_abb===''?'':
-                                            <Row>                                                
-                                                <Col>ชื่อย่อมหาวิทยาลัย: {app.uni_th_abb}</Col>
+                                            <Row>                                            
+                                                <Col>University abbreviation: {app.uni_abb}</Col>
                                             </Row>
-                                        }
-                                    </Col>
-                                    <Col>
-                                        {console.log(app.features)}
-                                        <Row type={'flex'}>                                            
-                                            <Col style={{margin: 3}}><NewspaperIcon fill={app.features.news?'#FF5A5F':'#DDD'}/></Col>
-                                            <Col style={{margin: 3}}><CalendarTextIcon fill={app.features.event?'#FF5A5F':'#DDD'}/></Col>
-                                        </Row>
-                                        <Row type={'flex'}>                                        
-                                            <Col style={{margin: 3}}><WorkerIcon fill={app.features.career?'#FF5A5F':'#DDD'}/></Col>
-                                            <Col style={{margin: 3}}><CoinIcon fill={app.features.donate?'#FF5A5F':'#DDD'}/></Col>
-                                        </Row>
-                                    </Col>
-                                </Row>
+                                            {app.uni_th_name===''?'':
+                                                <Row>
+                                                    <Col>ชื่อมหาวิทยาลัย: {app.uni_th_name}</Col>
+                                                </Row>
+                                            }
+                                            {app.uni_th_abb===''?'':
+                                                <Row>                                                
+                                                    <Col>ชื่อย่อมหาวิทยาลัย: {app.uni_th_abb}</Col>
+                                                </Row>
+                                            }
+                                        </Col>
+                                        <Col>
+                                            <Row type={'flex'}>                                            
+                                                <Col style={{margin: 3}}><NewspaperIcon fill={app.features.news?'#FF5A5F':'#DDD'}/></Col>
+                                                <Col style={{margin: 3}}><CalendarTextIcon fill={app.features.event?'#FF5A5F':'#DDD'}/></Col>
+                                            </Row>
+                                            <Row type={'flex'}>                                        
+                                                <Col style={{margin: 3}}><WorkerIcon fill={app.features.career?'#FF5A5F':'#DDD'}/></Col>
+                                                <Col style={{margin: 3}}><CoinIcon fill={app.features.donate?'#FF5A5F':'#DDD'}/></Col>
+                                            </Row>
+                                        </Col>
+                                    </Row>
+                                </Link>
                             ))}
                         </Card>
                     </Col>

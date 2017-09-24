@@ -1,19 +1,29 @@
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
+import {Redirect, Route} from 'react-router-dom'
 import {Row, Col, Form, Input, Button} from 'antd'
 import UploadImage from '../UploadImage'
+import {updateUserData} from '../../actions'
 
 class ProfileSettingPage extends Component {
     state = {
-        confirmDirty: false
+        confirmDirty: false,
+        logo: this.props.user.avatar || '',
+        redirect: false
+    }
+
+    setLogo = img => {
+        this.setState({logo: img})
     }
 
     handleSubmit = (e) => {
         e.preventDefault()
         this.props.form.validateFields((err, values) => {
             if (!err) {
-                values.avatar = this.props.avatar || ''
-                this.props.signUp(values)
+                values.avatar = this.state.logo || ''
+                this.props.updateUserData(values, this.props.user._id).then(() => {
+                    this.setState({redirect: true})
+                })
             }
         })
     }
@@ -22,6 +32,12 @@ class ProfileSettingPage extends Component {
         const { getFieldDecorator } = this.props.form
         const {email, avatar, firstname, lastname, location, tel, university, username} = this.props.user
         
+        if (this.state.redirect) {
+            return (
+                <Redirect to={'/profile'}/>
+            )
+        }
+
         return (
             <Form onSubmit={this.handleSubmit} className="login-form">
                 <Row style={{borderBottom: '1px solid #ddd', marginBottom: 15, fontSize: 20, paddingBottom: 5}}>Change profile</Row>
@@ -74,7 +90,7 @@ class ProfileSettingPage extends Component {
                         </Form.Item>
                     </Col>
                     <Col span={10} style={{display: 'flex', justifyContent: 'center', alignItems: 'center', paddingTop: 25}}>
-                        <UploadImage storeImage={this.props.storeAvatar}/>
+                        <UploadImage storeImage={this.setLogo} imageUrl={this.state.logo}/>
                     </Col>
                 </Row>
                 <Row>
@@ -98,7 +114,7 @@ class ProfileSettingPage extends Component {
                     </Form.Item>
                     <div style={{marginBottom: 4}}>Telephone No.</div>
                     <Form.Item>                                                                                            
-                        {getFieldDecorator('Tel', {
+                        {getFieldDecorator('tel', {
                             initialValue: tel,
                             rules: [{ required: true, message: 'Please input your telephone number!' }],
                         })(
@@ -120,4 +136,4 @@ const mapStateToProps = state => {
     return { user: state.auth.get('user') }
 }
 
-export default connect(mapStateToProps)(Form.create()(ProfileSettingPage))
+export default connect(mapStateToProps, {updateUserData})(Form.create()(ProfileSettingPage))
