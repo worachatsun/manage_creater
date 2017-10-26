@@ -14,7 +14,7 @@ class CreateAppComponent extends Component {
     constructor(props) {
         super(props)
         this.steps = [{
-            title: 'Insert information',
+            title: 'Insert university information',
             content: <InsertInformation toPage={page => this.setState({current: page})}/>,
             logo: 'edit'
         }, {
@@ -22,7 +22,7 @@ class CreateAppComponent extends Component {
             content: <ChooseFeature toPage={page => this.setState({current: page})}/>,
             logo: 'appstore'
         }, {
-            title: 'Genarate App',
+            title: 'Genarate application',
             content: <ExportApp />,
             logo: 'export'
         }]

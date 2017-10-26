@@ -35,13 +35,13 @@ class ChooseFeature extends Component {
             <div>
                 <Row gutter={6}>
                     <Col style={styles.middleContent} span={8}>
-                        <div onClick={() => this.setState({news: !this.state.news})}>
-                            <Card style={this.state.news?styles.selectedFeature:{}}>
+                        <div onClick={() => this.setState({career: !this.state.career})}>
+                            <Card style={this.state.career?styles.selectedFeature:{}}>
                                 <div style={styles.middleContent}>
-                                    <NewspaperIcon fill={this.state.news?'#FFF':'#000'}  className="icon-color" style={styles.imgStyle} />
+                                    <WorkerIcon fill={this.state.career?'#FFF':'#000'}  style={styles.imgStyle} />
                                 </div>
                                 <div style={styles.middleContent}>
-                                    <p style={{fontSize: '1.3em', marginTop: 20}}>NEWS</p>
+                                    <p style={{fontSize: '1.3em', marginTop: 20}}>CAREER</p>
                                     <p style={{marginTop: 10}}>Type imformation of your University</p>
                                 </div>
                             </Card>
@@ -74,17 +74,17 @@ class ChooseFeature extends Component {
                         </div>
                     </Col>
                 </Row>
-                <Row gutter={6} style={{marginTop: 20}}>
+                {/* <Row gutter={6} style={{marginTop: 20}}>
                     <Col style={styles.middleContent} span={8}>
                     </Col>
                     <Col style={styles.middleContent} span={8}>
-                        <div onClick={() => this.setState({career: !this.state.career})}>
-                            <Card style={this.state.career?styles.selectedFeature:{}}>
+                        <div onClick={() => this.setState({news: !this.state.news})}>
+                            <Card style={this.state.news?styles.selectedFeature:{}}>
                                 <div style={styles.middleContent}>
-                                    <WorkerIcon fill={this.state.career?'#FFF':'#000'}  style={styles.imgStyle} />
+                                    <NewspaperIcon fill={this.state.news?'#FFF':'#000'}  className="icon-color" style={styles.imgStyle} />
                                 </div>
                                 <div style={styles.middleContent}>
-                                    <p style={{fontSize: '1.3em', marginTop: 20}}>CAREER</p>
+                                    <p style={{fontSize: '1.3em', marginTop: 20}}>NEWS</p>
                                     <p style={{marginTop: 10}}>Type imformation of your University</p>
                                 </div>
                             </Card>
@@ -92,7 +92,7 @@ class ChooseFeature extends Component {
                     </Col>
                     <Col style={styles.middleContent} span={8}>
                     </Col>
-                </Row>
+                </Row> */}
             </div>
         )
     }
