@@ -65,15 +65,15 @@ class InsertInformation extends Component {
                             <Form.Item>
                                 <Row>
                                     <Col>
-                                    <div style={{display: 'flex', flexDirection: 'row'}}>
-                                        <div style={{marginRight: 10}}>Color: </div>
-                                        <div onClick={() => this.setState({color_block: !this.state.color_block})} style={{width: 80, height: 25, backgroundColor: this.state.color, border: '1px solid #ddd', borderRadius: '5px 5px 5px 5px'}}/>
-                                    </div>
-                                    {this.state.color_block?
-                                    <div style={ styles.popover }>
-                                        <div style={ styles.cover } onClick={ this.handleClose }/>
-                                        <BlockPicker color={ this.state.color } onChangeComplete={ this.handleChangeComplete }/>
-                                    </div>:''}
+                                        <div style={{display: 'flex', flexDirection: 'row'}}>
+                                            <div style={{marginRight: 10}}>Color: </div>
+                                            <div onClick={() => this.setState({color_block: !this.state.color_block})} style={{width: 80, height: 25, backgroundColor: this.state.color, border: '1px solid #ddd', borderRadius: '5px 5px 5px 5px'}}/>
+                                        </div>
+                                        {this.state.color_block?
+                                        <div style={ styles.popover }>
+                                            <div style={ styles.cover } onClick={ this.handleClose }/>
+                                            <BlockPicker color={ this.state.color } onChangeComplete={ this.handleChangeComplete }/>
+                                        </div>:''}
                                     </Col>
                                 </Row>
                             </Form.Item>

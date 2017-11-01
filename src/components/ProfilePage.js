@@ -59,10 +59,10 @@ class ProfilePage extends Component {
                                     state: { app }
                                 }}>
                                     <Row style={index===this.props.all_user_app.length-1?styles.appWithoutBorder:styles.appBorder} gutter={16}>
-                                        <Col>
+                                        <Col span={5} style={{display: 'flex', flexDirection: 'column', alignItems: 'center'}}>
                                             <img src={app.logo} alt={'logo'} style={{width: 75, height: 75}}/>
                                         </Col>
-                                        <Col>
+                                        <Col span={14} style={{display: 'flex', flexDirection: 'column', alignItems: 'center'}}>
                                             <Row>                                            
                                                 <Col>University name: {app.uni_name}</Col>
                                             </Row>
@@ -80,7 +80,7 @@ class ProfilePage extends Component {
                                                 </Row>
                                             }
                                         </Col>
-                                        <Col>
+                                        <Col span={5} style={{display: 'flex', flexDirection: 'column', alignItems: 'center'}}>
                                             <Row type={'flex'}>                                            
                                                 <Col style={{margin: 3}}><NewspaperIcon fill={app.features.news?'#FF5A5F':'#DDD'}/></Col>
                                                 <Col style={{margin: 3}}><CalendarTextIcon fill={app.features.event?'#FF5A5F':'#DDD'}/></Col>

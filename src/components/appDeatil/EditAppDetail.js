@@ -42,7 +42,6 @@ class EditAppDetail extends Component {
                     news, event, career, donate
                 }
                 this.props.updateAppData(values, this.props.app._id).then(() => {
-                    // this.props.toPage('detail')
                     this.setState({redirect: true})
                 })
             }
