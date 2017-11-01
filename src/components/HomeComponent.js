@@ -12,7 +12,7 @@ class HomeComponent extends Component {
         return (
             <div>
                 <Header />
-                <Row style={{height: 700, display: 'flex', justifyContent: 'center', alignItems: 'center', flexDirection: 'column', borderBottom: '1px solid #FF5A5F'}}>
+                <Row style={{height: 700, display: 'flex', justifyContent: 'center', alignItems: 'center', flexDirection: 'column', borderBottom: '2px solid #FF5A5F'}}>
                     <Row style={styles.mainContent}>
                         <Col style={{fontSize: '4em'}}>MAKING YOUR <span style={{color: '#FF5A5F'}}>NATIVE</span> APPLICATION</Col>
                     </Row>
@@ -22,6 +22,7 @@ class HomeComponent extends Component {
                     <Row style={styles.mainContent}>
                         <Col><Link to={'/create'}><Button style={styles.buttonColor} type="primary">Create an App</Button></Link></Col>
                     </Row>
+                    <img src={require('../styles/images/big_appaca.png')} style={{position: 'absolute', bottom: -1, left: 100}}/>
                 </Row>
                 <Row style={{marginTop: 30}}>
                     <Row gutter={16} style={{padding: 30, borderBottom: '1px solid #ddd', marginLeft: 100, marginRight: 100}}  type={'flex'} justify={'center'}>

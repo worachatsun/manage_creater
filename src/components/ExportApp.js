@@ -6,11 +6,11 @@ import DemoMobileScreen from './mobileScreen/DemoMobileScreen'
 class ExportApp extends Component{
     render() {
         const { uni_name, uni_abb, uni_th_abb, uni_th_name, color } = this.props.create_data
-        
+
         return(
             <Row>
                 <Col span={10} style={{display: 'flex', justifyContent: 'center'}}>
-                    <DemoMobileScreen create_data={this.props.create_data} />
+                    <DemoMobileScreen create_data={this.props.create_data} feature_choosed={this.props.feature_choosed} />
                 </Col>
                 <Col span={14}>
                     <Card>
@@ -46,7 +46,11 @@ const styles = {
 }
 
 const mapStateToProps = state => {
-    return { create_data: state.create.get('create_data'), logo: state.create.get('logo') }
+    return { 
+        create_data: state.create.get('create_data'), 
+        logo: state.create.get('logo'),
+        feature_choosed: state.create.get('feature_choosed')
+    }
 }
 
 export default connect(mapStateToProps)(ExportApp)

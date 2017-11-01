@@ -11,3 +11,5 @@ export const POST_DOWNLOAD_ANDROID = `${API_URL}/api/downloadAndroid`
 export const POST_USER_APP = `${API_URL}/api/getAppByUser`
 export const PUT_UPDATE_USER = `${API_URL}/auth/updateUserData`
 export const POST_CHANGR_PASSWORD = `${API_URL}/auth/changePassword`
+export const POST_CHANGR_APP_DATAIL = `${API_URL}/api/updateAppData`
+export const POST_DELETE_APP = `${API_URL}/api/deleteApp`
